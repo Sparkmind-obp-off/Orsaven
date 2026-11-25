@@ -20,6 +20,7 @@ describe('public API', () => {
     expect(r.res.headers.get('Cache-Control')).toBe('no-store')
     const html = await ctx.app.request('https://orsaven.biz.id/', {}, ctx.env)
     expect(html.headers.get('Content-Security-Policy')).toContain("frame-ancestors 'none'")
+    expect(html.headers.get('Content-Security-Policy')).toContain('https://cdn.protect.clerk.com')
   })
 
   it('lists families and 24 seeded categories', async () => {

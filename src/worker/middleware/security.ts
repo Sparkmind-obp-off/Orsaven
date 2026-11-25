@@ -7,8 +7,8 @@ export function contentSecurityPolicy(env: Env): string {
   const fapi = clerkFrontendApi(env)
   return [
     "default-src 'self'",
-    `script-src 'self' ${fapi} https://challenges.cloudflare.com`,
-    `connect-src 'self' ${fapi} https://api.clerk.com https://clerk-telemetry.com`,
+    `script-src 'self' ${fapi} https://cdn.protect.clerk.com https://challenges.cloudflare.com https://static.cloudflareinsights.com`,
+    `connect-src 'self' ${fapi} https://*.protect.clerk.com https://*.protect.clerk.com:* https://api.clerk.com https://clerk-telemetry.com https://cloudflareinsights.com`,
     "img-src 'self' data: https://img.clerk.com",
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self' data:",
