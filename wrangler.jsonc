@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "orsaven",
+  "compatibility_date": "2025-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "pages_build_output_dir": "./dist",
+  "vars": {
+    "ENVIRONMENT": "production",
+    "APP_ORIGIN": "https://orsaven.biz.id",
+    "ALLOWED_ORIGINS": "https://orsaven.pages.dev",
+    "PAYMENT_PROVIDER": "none"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "orsaven-production",
+      "database_id": "PENDING_CREATE"
+    }
+  ]
+  // R2 (PRIVATE_FILES) intentionally NOT bound: not explicitly authorised. D1 blob storage is used instead.
+}

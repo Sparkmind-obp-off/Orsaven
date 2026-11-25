@@ -1,0 +1,10 @@
+# Copy to .dev.vars for local development. NEVER commit .dev.vars.
+ENVIRONMENT=development
+APP_ORIGIN=http://localhost:3000
+CLERK_PUBLISHABLE_KEY=pk_live_xxx
+CLERK_SECRET_KEY=sk_live_xxx
+CLERK_AUTHORIZED_PARTIES=http://localhost:3000
+CLERK_WEBHOOK_SECRET=
+SUPER_ADMIN_EMAILS=owner@example.com
+IP_HASH_SALT=change-me
+PAYMENT_PROVIDER=none
