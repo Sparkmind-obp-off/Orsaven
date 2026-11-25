@@ -5,7 +5,7 @@
 - [x] Productization role and four catalog pillars defined.
 - [x] Initial brand and operating documentation.
 - [ ] Confirm domain DNS and ownership configuration.
-- [ ] Review repository, hosting, and current infrastructure.
+- [x] Review repository, hosting, and current infrastructure.
 - [ ] Approve visual identity direction.
 
 ## Phase 1 — Product intelligence
@@ -17,9 +17,9 @@
 
 ## Phase 2 — Website foundation
 - [ ] Finalize visual identity and design system.
-- [ ] Build responsive public pages and category structure.
-- [ ] Add product detail templates and maturity labels.
-- [ ] Add contact and support flows.
+- [x] Build responsive public pages and category structure.
+- [x] Add product detail templates and maturity labels.
+- [x] Add contact and support flows.
 - [ ] Complete accessibility, SEO, security, and performance checks.
 
 ## Phase 3 — Controlled pilot
