@@ -14,7 +14,7 @@
     {
       "binding": "DB",
       "database_name": "orsaven-production",
-      "database_id": "PENDING_CREATE"
+      "database_id": "00000000-0000-0000-0000-000000000000"
     }
   ]
   // R2 (PRIVATE_FILES) intentionally NOT bound: not explicitly authorised. D1 blob storage is used instead.

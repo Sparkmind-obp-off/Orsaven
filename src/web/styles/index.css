@@ -1,0 +1,200 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/fraunces/opsz.css';
+@import '@fontsource-variable/inter/opsz.css';
+
+/* ───────────────────────────────────────────────────────────
+   ORSAVEN design tokens — see docs/DESIGN_SYSTEM.md
+   ─────────────────────────────────────────────────────────── */
+@theme {
+  /* Brand surfaces */
+  --color-forest-950: #0d1813;
+  --color-forest-900: #13221b;
+  --color-forest-800: #1b3127;
+  --color-forest-700: #264536;
+  --color-forest-600: #335a47;
+
+  --color-ivory-50: #fbf8f1;
+  --color-ivory-100: #f5f0e4;
+  --color-ivory-200: #ebe3d1;
+  --color-ivory-300: #ddd2ba;
+
+  --color-sage-200: #d3dccd;
+  --color-sage-300: #b7c4b0;
+  --color-sage-400: #97aa92;
+  --color-sage-500: #788d75;
+  --color-sage-600: #5b6f59;
+  --color-sage-700: #465745;
+
+  /* Restrained warm-metal accent — use on dark surfaces or as hairlines only */
+  --color-brass-300: #dcc596;
+  --color-brass-400: #c9a86a;
+  --color-brass-500: #a98a4f;
+  --color-brass-700: #6e5627;
+
+  --color-ink: #161a18;
+  --color-stone-500: #6b6a62;
+  --color-stone-600: #56554e;
+
+  --color-success: #2f6b47;
+  --color-warning: #85621a;
+  --color-danger: #9a2f2a;
+
+  /* Typography */
+  --font-display: 'Fraunces Variable', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+
+  --text-display-xl: clamp(2.75rem, 1.6rem + 4.6vw, 5.75rem);
+  --text-display-xl--line-height: 1.02;
+  --text-display-lg: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+  --text-display-lg--line-height: 1.06;
+  --text-display-md: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  --text-display-md--line-height: 1.12;
+  --text-display-sm: clamp(1.375rem, 1.15rem + 0.9vw, 1.875rem);
+  --text-display-sm--line-height: 1.2;
+
+  /* Layout */
+  --container-prose: 68ch;
+  --container-site: 82rem;
+  --breakpoint-xs: 30rem;
+  --breakpoint-3xl: 112rem;
+
+  /* Shape & depth — deliberately restrained */
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --shadow-hairline: 0 0 0 1px rgb(13 24 19 / 0.08);
+  --shadow-soft: 0 1px 2px rgb(13 24 19 / 0.04), 0 8px 24px -12px rgb(13 24 19 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(13 24 19 / 0.05), 0 22px 44px -24px rgb(13 24 19 / 0.35);
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-ivory-50 text-ink font-sans;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: 'SOFT' 30, 'WONK' 0;
+    letter-spacing: -0.015em;
+  }
+  ::selection {
+    @apply bg-forest-800 text-ivory-50;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brass-500);
+    outline-offset: 3px;
+    border-radius: var(--radius-xs);
+  }
+  .dark-surface :focus-visible {
+    outline-color: var(--color-brass-300);
+  }
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+  [hidden] {
+    display: none !important;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-(--container-site) px-5 sm:px-8 lg:px-12;
+  }
+  .eyebrow {
+    @apply text-[0.7rem] font-semibold uppercase tracking-[0.22em] text-sage-600;
+  }
+  .dark-surface .eyebrow {
+    @apply text-brass-300;
+  }
+  .rule {
+    @apply h-px w-full bg-ink/10;
+  }
+  .hairline {
+    box-shadow: var(--shadow-hairline);
+  }
+  .prose-orsaven {
+    @apply max-w-(--container-prose) text-[1.0625rem] leading-[1.75] text-ink/85;
+  }
+  .prose-orsaven h2 {
+    @apply mt-10 mb-3 text-display-sm text-forest-950;
+  }
+  .prose-orsaven h3 {
+    @apply mt-8 mb-2 text-xl text-forest-950;
+  }
+  .prose-orsaven p {
+    @apply my-4;
+  }
+  .prose-orsaven ul {
+    @apply my-4 list-disc space-y-1.5 pl-5 marker:text-sage-500;
+  }
+  .prose-orsaven blockquote {
+    @apply my-6 border-l-2 border-brass-500 bg-ivory-100 px-5 py-4 text-[0.95rem] text-forest-900;
+  }
+  .prose-orsaven strong {
+    @apply font-semibold text-forest-950;
+  }
+  .prose-orsaven a {
+    @apply text-forest-700 underline;
+  }
+  .grain {
+    background-image: radial-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s var(--ease-out-quart);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.animate-fade-up {
+  animation: fade-up 0.6s var(--ease-out-quart) both;
+}
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, var(--color-ivory-200) 0%, var(--color-ivory-100) 50%, var(--color-ivory-200) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}

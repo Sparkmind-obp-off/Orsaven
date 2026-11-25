@@ -10,6 +10,8 @@ import type { AuthDeps, Env } from '../src/worker/types'
 import { hmacSha256, toHex } from '../src/worker/lib/crypto'
 
 type Sqlite = InstanceType<typeof Database>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type TestJson = { data?: any; error?: { code: string }; meta?: any }
 
 function norm(v: unknown): unknown {
   if (v === undefined) return null
@@ -110,7 +112,7 @@ export function setup(overrides: Partial<Env> = {}) {
     const res = await app.request(`https://orsaven.biz.id${path}`, { method, headers, body }, env)
     const ct = res.headers.get('Content-Type') ?? ''
     const json = ct.includes('json') ? await res.json() : null
-    return { res, status: res.status, json: json as { data?: never; error?: { code: string }; meta?: never } & Record<string, never> }
+    return { res, status: res.status, json: json as TestJson }
   }
   return { env, raw, app, call }
 }

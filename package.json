@@ -8,7 +8,7 @@
     "build": "npm run build:web && npm run build:worker",
     "build:web": "vite build",
     "build:worker": "node scripts/build-worker.mjs",
-    "dev:sandbox": "wrangler pages dev dist --d1=DB --local --ip 0.0.0.0 --port 3000",
+    "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
     "typecheck": "tsc -p tsconfig.app.json --noEmit && tsc -p tsconfig.worker.json --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
@@ -16,7 +16,7 @@
     "check": "npm run typecheck && npm run lint && npm run test && npm run build",
     "db:migrate:local": "wrangler d1 migrations apply orsaven-production --local",
     "db:migrate:prod": "wrangler d1 migrations apply orsaven-production --remote",
-    "db:seed:local": "wrangler d1 execute orsaven-production --local --file=./seed/dev.sql",
+    "db:seed:local": "wrangler d1 execute orsaven-production --local --file=./seed/demo.sql",
     "deploy": "npm run build && wrangler pages deploy dist --project-name orsaven --branch main"
   },
   "dependencies": {

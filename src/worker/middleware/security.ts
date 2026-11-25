@@ -8,7 +8,7 @@ export function contentSecurityPolicy(env: Env): string {
   return [
     "default-src 'self'",
     `script-src 'self' ${fapi} https://challenges.cloudflare.com`,
-    `connect-src 'self' ${fapi} https://api.clerk.com`,
+    `connect-src 'self' ${fapi} https://api.clerk.com https://clerk-telemetry.com`,
     "img-src 'self' data: https://img.clerk.com",
     "style-src 'self' 'unsafe-inline'",
     "font-src 'self' data:",
